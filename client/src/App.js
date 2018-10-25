@@ -6,6 +6,8 @@ import axios from 'axios';
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Home from "./components/Home";
+import Detail from "./components/Detail";
+import Canvas from "./components/Canvas";
 
 class App extends Component {
   state = {
@@ -113,6 +115,22 @@ class App extends Component {
             return <Redirect to = "/" />
           } else {
             return <Home handleLogout = {this.handleLogout} auth = { this.state.auth }/>
+          } 
+        }
+        }/>
+        <Route exact path = "/detail" render = {()=> {
+          if(!loggedIn){
+            return <Redirect to = "/detail" />
+          } else {
+            return <Detail handleLogout = {this.handleLogout} auth = { this.state.auth }/>
+          } 
+        }
+        }/>
+        <Route exact path = "/canvas" render = {()=> {
+          if(!loggedIn){
+            return <Redirect to = "/canvas" />
+          } else {
+            return <Canvas handleLogout = {this.handleLogout} auth = { this.state.auth }/>
           } 
         }
         }/>
