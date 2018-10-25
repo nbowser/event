@@ -7,12 +7,17 @@ const User = new Schema({
 	eventName: {type: String, required: true},
 	eventDate: {type: String, required: true},
 	eventClient: String,
-	venue: String,
-    guestCount: String,
-    schedule: String,
-    catering: String,
-    entertainment: String,
-    Notes: String,
+    // venue: String,
+    // streetOne: String,
+    // streetTwo: String,
+    // city: String,
+    // state: String,
+    // zip: String,
+    // guestCount: String,
+    // schedule: String,
+    // catering: String,
+    // entertainment: String,
+    // Notes: String,
 	//you may replace this 'name' field with anything you like
 });
 //passport-local-mongoose creates a 'username' and some 'password' fields for you

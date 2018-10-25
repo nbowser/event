@@ -118,9 +118,9 @@ class App extends Component {
           } 
         }
         }/>
-        <Route exact path = "/detail" render = {()=> {
+        <Route exact path = "/home/:id" render = {()=> {
           if(!loggedIn){
-            return <Redirect to = "/detail" />
+            return <Redirect to = "/home/:id" />
           } else {
             return <Detail handleLogout = {this.handleLogout} auth = { this.state.auth }/>
           } 

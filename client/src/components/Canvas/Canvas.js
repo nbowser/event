@@ -7,7 +7,7 @@ const Nav = (props) => (
     <nav className="navbar navbar-dark bg-dark">
       <span className="navbar-brand" href="#">Event Assistant</span>
       <span className="text-white"></span>      
-      <Link to="/detail">Details</Link>
+      <Link to="/home/:id">Details</Link>
       <Link to="/logout">Logout</Link>
       <button onClick = {props.handleLogout}>Log Out</button>
     </nav>

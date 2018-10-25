@@ -23,7 +23,7 @@ const Nav = (props) => (
     <nav className="navbar navbar-dark bg-dark">
       <span className="navbar-brand" href="#">Event Assistant</span>
       <span className="text-white"></span>
-      <Link to="/detail">Details</Link>
+      <Link to="/home/:id">Details</Link>
       <Link to="/auth/logout">Logout</Link>
       <button onClick = {props.handleLogout}>Log Out</button>
     </nav>
@@ -32,27 +32,27 @@ const Nav = (props) => (
   class Home extends Component {
    
     state = {
-      eventsArray: [],
+      users: [],
       eventName: "",
       eventDate: "",
       eventClient: ""
     };
 
     componentDidMount() {
-      this.loadEvent();
+      this.loadUsers();
     }
   
-    loadEvent = () => {
-      API.getEvents()
+    loadUsers = () => {
+      API.getUsers()
         .then(res =>
-          this.setState({ eventsArray: res.data, eventName: "", eventDate: "", eventClient: "" })
+          this.setState({ users: res.data, eventName: "", eventDate: "", eventClient: "" })
         )
         .catch(err => console.log(err));
     };
   
-    deleteEvent = id => {
-      API.deleteEvent(id)
-        .then(res => this.loadEvents())
+    deleteUser = id => {
+      API.deleteUser(id)
+        .then(res => this.loadUsers())
         .catch(err => console.log(err));
     };
 
@@ -69,12 +69,12 @@ const Nav = (props) => (
     handleFormSubmit = event => {
       event.preventDefault();
       if (this.state.eventName && this.state.eventDate) {
-        API.saveEvent({
+        API.saveUser({
           eventName: this.state.eventName,
           eventDate: this.state.eventDate,
           eventClient: this.state.eventClient
         })
-          .then(res => this.loadEvents())
+          .then(res => this.loadUsers())
           .catch(err => console.log(err));
       }
     };
@@ -120,16 +120,16 @@ const Nav = (props) => (
 
             <Col size="md-6">
             <h2>Events</h2>
-            {this.state.eventsArray.length ? (
+            {this.state.users.length ? (
               <List>
-                {this.state.eventsArray.map(event => (
-                  <ListItem key={event._id}>
-                    <Link to={"/home/" + event._id}>
+                {this.state.users.map(user => (
+                  <ListItem key={user._id}>
+                    <Link to={"/home/" + user._id}>
                       <strong>
-                        {event.eventName} by {event.eventDate}
+                        {user.eventName} by {user.eventDate}
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => this.deleteEvent(event._id)} />
+                    <DeleteBtn onClick={() => this.deleteEvent(user._id)} />
                   </ListItem>
                 ))}       
             </List>
