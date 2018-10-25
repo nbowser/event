@@ -13,9 +13,10 @@ app.use(express.json());
 
 // * Test
 // Serve up static assets
-if (process.env.NODE_ENV === "production") {
 app.use(express.static("client/build"));
-}
+// if (process.env.NODE_ENV === "production") {
+
+// }
  // For Passport
 app.use(session({ secret: 'superSecretevent',resave: true, saveUninitialized:true})); // session secret
 app.use(passport.initialize());

@@ -1,2 +1,2 @@
 # event
-heroku 3
+heroku 3 tr tr
