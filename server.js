@@ -10,9 +10,12 @@ const session = require('express-session');
 // Configure body parser for AJAX requests
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
-// Serve up static assets
-app.use(express.static("client/build"));
 
+// * Test
+// Serve up static assets
+if (process.env.NODE_ENV === "production") {
+app.use(express.static("client/build"));
+}
  // For Passport
 app.use(session({ secret: 'superSecretevent',resave: true, saveUninitialized:true})); // session secret
 app.use(passport.initialize());

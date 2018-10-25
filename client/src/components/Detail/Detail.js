@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import DeleteBtn from "../DeleteBtn";
+// import DeleteBtn from "../DeleteBtn";
 import { Col, Row, Container } from "../Grid";
-import { List, ListItem } from "../List";
+// import { List, ListItem } from "../List";
 import { Input, TextArea, FormBtn } from "../Form";
 import "./Detail.css";
 
@@ -10,8 +10,8 @@ import "./Detail.css";
 
 const Nav = (props) => (
   <nav className="navbar navbar-dark bg-dark">
-      <a className="navbar-brand" href="#">Event Assistant</a>
-      <a className="text-white"></a>     
+    <span className="navbar-brand" href="#">Event Assistant</span>
+    <span className="text-white"></span>
     <Link to="/home">Main</Link>
     <Link to="/canvas">Floor Plan</Link>
     <Link to="/auth/logout">Log out</Link>
@@ -39,6 +39,11 @@ class Detail extends Component {
   state = {
     detailsArray: [],
     venue: "",
+    streetOne: "",
+    streetTwo: "",
+    city: "",
+    state: "",
+    zip: "",
     guestCount: "",
     schedule: "",
     catering: "",
@@ -68,31 +73,63 @@ class Detail extends Component {
         <Col size="md-6">
             <h1>Event Details</h1>
             <form>
-              <TextArea
+              <Input
                 value={this.state.venue}
                 onChange={this.handleInputChange}
                 name="venue"
                 placeholder="Venue"
               />
-                <TextArea
+              <div className="address">
+              <Input
+                value={this.state.streetOne}
+                onChange={this.handleInputChange}
+                name="streetOne"
+                placeholder="Street"
+              />
+              <Input
+                value={this.state.streetTwo}
+                onChange={this.handleInputChange}
+                name="streetTwo"
+                placeholder="Street"
+              />  
+              <Input
+                value={this.state.city}
+                onChange={this.handleInputChange}
+                name="city"
+                placeholder="City"
+              />
+              <Input
+                value={this.state.state}
+                onChange={this.handleInputChange}
+                name="state"
+                placeholder="State"
+              />
+              <Input
+                value={this.state.zip}
+                onChange={this.handleInputChange}
+                name="zip"
+                placeholder="Zip"
+              />
+              </div>
+              <Input
                 value={this.state.guestCount}
                 onChange={this.handleInputChange}
                 name="guestCount"
                 placeholder="Guest Count"
               />
-              <TextArea
+              <Input
                 value={this.state.schedule}
                 onChange={this.handleInputChange}
                 name="schedule"
                 placeholder="Schedule"
               />
-              <TextArea
+              <Input
                 value={this.state.catering}
                 onChange={this.handleInputChange}
                 name="catering"
                 placeholder="Catering"
               />
-              <TextArea
+              <Input
                 value={this.state.entertainment}
                 onChange={this.handleInputChange}
                 name="entertainment"

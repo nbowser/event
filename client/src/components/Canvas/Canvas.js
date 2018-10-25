@@ -5,10 +5,10 @@ import {SketchField, Tools} from 'react-sketch';
 
 const Nav = (props) => (
     <nav className="navbar navbar-dark bg-dark">
-      <a className="navbar-brand" href="#">Event Assistant</a>
-      <a className="text-white"></a>      
+      <span className="navbar-brand" href="#">Event Assistant</span>
+      <span className="text-white"></span>      
       <Link to="/detail">Details</Link>
-      <Link to="/auth/logout">Logout</Link>
+      <Link to="/logout">Logout</Link>
       <button onClick = {props.handleLogout}>Log Out</button>
     </nav>
   );
@@ -63,7 +63,7 @@ class Canvas extends React.Component {
             {/* <button onClick=</button> */}
             <button onClick={this.savePlan}>Save</button>
               <SketchField width='100%' 
-                         height='768px' 
+                         height='810px' 
                          tool={this.state.tool} 
                          lineColor='black'
                          lineWidth={3}/>

@@ -5,6 +5,7 @@ import { Col, Row, Container } from "../Grid";
 import { List, ListItem } from "../List";
 import { Input, FormBtn } from "../Form";
 import DeleteBtn from "../DeleteBtn";
+import API from "../../utils/API";
 
 
 
@@ -37,6 +38,24 @@ const Nav = (props) => (
       eventClient: ""
     };
 
+    componentDidMount() {
+      this.loadEvent();
+    }
+  
+    loadEvent = () => {
+      API.getEvents()
+        .then(res =>
+          this.setState({ eventsArray: res.data, eventName: "", eventDate: "", eventClient: "" })
+        )
+        .catch(err => console.log(err));
+    };
+  
+    deleteEvent = id => {
+      API.deleteEvent(id)
+        .then(res => this.loadEvents())
+        .catch(err => console.log(err));
+    };
+
     handleInputChange = event => {
       console.log(event);
       let {name, value} = event.target;
@@ -47,6 +66,18 @@ const Nav = (props) => (
 
     };
 
+    handleFormSubmit = event => {
+      event.preventDefault();
+      if (this.state.eventName && this.state.eventDate) {
+        API.saveEvent({
+          eventName: this.state.eventName,
+          eventDate: this.state.eventDate,
+          eventClient: this.state.eventClient
+        })
+          .then(res => this.loadEvents())
+          .catch(err => console.log(err));
+      }
+    };
 
     render() {
       return(
