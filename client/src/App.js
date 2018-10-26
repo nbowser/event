@@ -64,6 +64,8 @@ class App extends Component {
             username
           }
         });
+      }else {
+        console.log(data.data.err);
       }
     });
   }
