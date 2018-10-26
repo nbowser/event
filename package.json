@@ -9,7 +9,7 @@
     "start": "concurrently \"nodemon server.js\" \"npm run client\"",
     "seed": "node scripts/seedDB.js",
     "test": "jest",
-    "install": "cd client && yarn install",
+    "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
