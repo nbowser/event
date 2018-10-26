@@ -4,9 +4,9 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 const User = new Schema({
 
-	eventName: {type: String, required: true},
-	eventDate: {type: String, required: true},
-	eventClient: String,
+	// eventName: {type: String, required: true},
+	// eventDate: {type: String, required: true},
+	// eventClient: String,
     // venue: String,
     // streetOne: String,
     // streetTwo: String,
